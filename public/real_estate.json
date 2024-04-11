@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "segment_name": "Hotel",
+    "estate_title": "Luxury Beachfront Hotel",
+    "image": "https://i.ibb.co/g3fLy7z/Luxury-Beachfront-Hotel.webp",
+    "description": "Experience ultimate luxury and relaxation at our beachfront hotel. With stunning ocean views, spacious rooms, and top-notch amenities, your vacation dreams will come true.",
+    "price": "$500 per night",
+    "status": "rent",
+    "area": "5000 sq ft",
+    "location": "Miami Beach, Florida",
+    "facilities": ["ocean view rooms", "pool", "spa", "restaurant"]
+  },
+  {
+    "id": 2,
+    "segment_name": "Resort",
+    "estate_title": "Tropical Paradise Resort",
+    "image": "https://i.ibb.co/RQf0PHC/tropical-paradise-hotel.jpg",
+    "description": "Escape to our tropical paradise resort where palm trees sway and relaxation awaits. Enjoy luxurious accommodations, pristine beaches, and endless activities for the whole family.",
+    "price": "$1000 per night",
+    "status": "rent",
+    "area": "10,000 sq ft",
+    "location": "Maui, Hawaii",
+    "facilities": ["beachfront villas", "multiple pools", "golf course", "spa"]
+  },
+  {
+    "id": 3,
+    "segment_name": "Vacation Rental",
+    "estate_title": "Charming Cottage Retreat",
+    "image": "https://i.ibb.co/bz1KYqW/Charming-cottage-retreat.jpg",
+    "description": "Experience the charm and comfort of our cottage retreat nestled in the countryside. Perfect for a romantic getaway or family vacation, our cozy cottage offers tranquility and relaxation.",
+    "price": "$200 per night",
+    "status": "rent",
+    "area": "1500 sq ft",
+    "location": "Aspen, Colorado",
+    "facilities": [
+      "fireplace",
+      "mountain views",
+      "outdoor hot tub",
+      "fully equipped kitchen"
+    ]
+  },
+  {
+    "id": 4,
+    "segment_name": "Lodge",
+    "estate_title": "Mountain Wilderness Lodge",
+    "image": "https://i.ibb.co/Kbg23KP/Mountain-West-Coast-Wilderness.jpg",
+    "description": "Escape to the heart of the wilderness at our rustic mountain lodge. Surrounded by towering pines and majestic peaks, our lodge offers cozy accommodations and outdoor adventures.",
+    "price": "$300 per night",
+    "status": "rent",
+    "area": "2500 sq ft",
+    "location": "Banff National Park, Canada",
+    "facilities": [
+      "wood-burning fireplace",
+      "hiking trails",
+      "skiing",
+      "restaurant"
+    ]
+  },
+  {
+    "id": 5,
+    "segment_name": "Guesthouse",
+    "estate_title": "Quaint Countryside Guesthouse",
+    "image": "https://i.ibb.co/JFjgyPv/Quaint-Countryside-Guesthouse-Cotswold-District-UK-Header.jpg",
+    "description": "Experience the warmth and hospitality of our charming countryside guesthouse. Nestled amidst rolling hills and lush gardens, our guesthouse offers a cozy retreat for travelers.",
+    "price": "$150 per night",
+    "status": "rent",
+    "area": "1800 sq ft",
+    "location": "Cotswolds, England",
+    "facilities": [
+      "garden terrace",
+      "homemade breakfast",
+      "bicycle rentals",
+      "WiFi"
+    ]
+  },
+  {
+    "id": 6,
+    "segment_name": "Hotel",
+    "estate_title": "Urban Boutique Hotel",
+    "image": "https://i.ibb.co/TR8rm73/Urban-Boutique-Hotel.jpg",
+    "description": "Discover urban chic and sophistication at our boutique hotel located in the heart of the city. With stylish accommodations, gourmet dining, and vibrant nightlife nearby, you'll experience the best of city living.",
+    "price": "$300 per night",
+    "status": "rent",
+    "area": "3000 sq ft",
+    "location": "New York City, New York",
+    "facilities": [
+      "rooftop bar",
+      "fitness center",
+      "concierge service",
+      "valet parking"
+    ]
+  },
+  {
+    "id": 7,
+    "segment_name": "Motel",
+    "estate_title": "Coastal Motel Retreat",
+    "image": "https://i.ibb.co/RgzFKBy/Coastal-Motel-Retreat.jpg",
+    "description": "Escape to our coastal motel retreat where relaxation meets affordability. Located just steps from the beach, our cozy rooms offer a comfortable retreat for travelers.",
+    "price": "$80 per night",
+    "status": "rent",
+    "area": "1000 sq ft",
+    "location": "Santa Monica, California",
+    "facilities": [
+      "ocean view rooms",
+      "outdoor pool",
+      "BBQ area",
+      "free breakfast"
+    ]
+  },
+  {
+    "id": 8,
+    "segment_name": "Resort",
+    "estate_title": "Ski Resort Getaway",
+    "image": "https://i.ibb.co/C6JkzGD/Ski-Resort-Getaway.jpg",
+    "description": "Experience the thrill of the slopes at our ski resort getaway nestled in the mountains. With ski-in/ski-out access, luxurious accommodations, and après-ski amenities, your winter adventure awaits.",
+    "price": "$400 per night",
+    "status": "rent",
+    "area": "4000 sq ft",
+    "location": "Whistler, British Columbia",
+    "facilities": [
+      "ski-in/ski-out access",
+      "hot tub",
+      "fireside lounge",
+      "ski concierge"
+    ]
+  },
+  {
+    "id": 9,
+    "segment_name": "Vacation Rental",
+    "estate_title": "Lakefront Cabin Retreat",
+    "image": "https://i.ibb.co/z89NgGh/Lakefront-Cabin-Retreat.jpg",
+    "description": "Escape to our cozy lakefront cabin retreat surrounded by nature's beauty. Perfect for a family vacation or romantic getaway, our cabin offers tranquility and serenity on the water's edge.",
+    "price": "$250 per night",
+    "status": "rent",
+    "area": "2000 sq ft",
+    "location": "Lake Tahoe, California",
+    "facilities": ["private dock", "kayaks", "fire pit", "deck with lake views"]
+  }
+]
