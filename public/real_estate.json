@@ -25,12 +25,12 @@
   },
   {
     "id": 3,
-    "segment_name": "Vacation Rental",
+    "segment_name": "Vacation Rental and Real Estate",
     "estate_title": "Charming Cottage Retreat",
     "image": "https://i.ibb.co/bz1KYqW/Charming-cottage-retreat.jpg",
     "description": "Experience the charm and comfort of our cottage retreat nestled in the countryside. Perfect for a romantic getaway or family vacation, our cozy cottage offers tranquility and relaxation.",
     "price": "$200 per night",
-    "status": "rent",
+    "status": "sale / rent",
     "area": "1500 sq ft",
     "location": "Aspen, Colorado",
     "facilities": [
