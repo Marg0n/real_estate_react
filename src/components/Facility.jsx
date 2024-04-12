@@ -1,11 +1,11 @@
 
 import { PropTypes } from 'prop-types';
 
-const Facility = ({facility}) => {
+const Facility = ({ facility }) => {
     return (
-        <>
-            <i className='bg-green-50 rounded-2xl py-1 px-2 mr-4 text-green-600'>#{facility}</i>
-        </>
+        <p className='flex gap-1 flex-col'>
+            <i className='bg-blue-100 rounded-2xl py-1 px-2 m-1 text-blue-600'>#{facility}</i>
+        </p>
     );
 };
 
