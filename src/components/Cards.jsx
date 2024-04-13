@@ -7,7 +7,7 @@ const Cards = ({ estates }) => {
 
 
   // const { bookId } = books;
-  console.log(estates)
+
 
   return (
     <div

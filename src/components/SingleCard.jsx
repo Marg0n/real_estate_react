@@ -14,27 +14,27 @@ const SingleCard = ({ estate }) => {
         facilities } = estate;
 
     return (
-        <Link
-            to={`/estate/${id}`}
-            className="border rounded-xl cursor-pointer hover:border-opacity-50 border-opacity-20 hover:scale-105 overflow-hidden hover:border-blue-700 "
+        <div
+
+            className="border-2 rounded-xl cursor-pointer hover:border-opacity-50 border-opacity-20 hover:scale-105 overflow-hidden hover:border-blue-700"
         >
 
             <div className="card shadow-2xl min-h-[80vh] ">
                 <figure className="mx-8 mt-8 p-6 rounded-xl bg-gray-200">
                     <img
                         src={image}
-                        alt="Book image"
+                        alt="Estate image"
                         className="rounded-xl h-56 w-auto"
                     />
                 </figure>
                 <div className="card-body items-center text-start ">
-                    <div className='w-full  '>
-                        {
-                            facilities.map((facility, idx) => <Facility key={idx} facility={facility} />)
-                        }
+                    <div className='w-full '>
+                            {
+                                facilities.map((facility, idx) => <Facility key={idx} facility={facility} />)
+                            }
                     </div>
-                    <div className="h-28 w-full space-y-2 mt-4">
-                        <h2 className="text-xl font-semibold text-start">{estate_title}</h2>
+                    <div className="h-28 w-full space-y-2 my-8">
+                        <h2 className="text-xl font-semibold text-start font-serif">{estate_title}</h2>
                         <p className="text-base">Location : <span className='font-semibold'> {location}</span></p>
                         <p className="text-base">Segment : <span className='font-semibold'> {segment_name}</span></p>
                         <p className="text-base">For : <span className='font-semibold'> {status}</span></p>
@@ -52,8 +52,9 @@ const SingleCard = ({ estate }) => {
                         </small>
                     </div>
                 </div>
+                <Link to={`/estate/${id}`} className='btn m-4 bg-teal-400 hover:bg-blue-500'>View Property</Link>
             </div>
-        </Link>
+        </div>
     );
 };
 
