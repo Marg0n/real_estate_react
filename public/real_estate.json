@@ -30,7 +30,7 @@
     "image": "https://i.ibb.co/bz1KYqW/Charming-cottage-retreat.jpg",
     "description": "Experience the charm and comfort of our cottage retreat nestled in the countryside. Perfect for a romantic getaway or family vacation, our cozy cottage offers tranquility and relaxation.",
     "price": "$200 per night",
-    "status": "sale / rent",
+    "status": "rent",
     "area": "1500 sq ft",
     "location": "Aspen, Colorado",
     "facilities": [
@@ -46,8 +46,8 @@
     "estate_title": "Mountain Wilderness Lodge",
     "image": "https://i.ibb.co/Kbg23KP/Mountain-West-Coast-Wilderness.jpg",
     "description": "Escape to the heart of the wilderness at our rustic mountain lodge. Surrounded by towering pines and majestic peaks, our lodge offers cozy accommodations and outdoor adventures.",
-    "price": "$300 per night",
-    "status": "rent",
+    "price": "$1,000,000 per Lodge",
+    "status": "sale",
     "area": "2500 sq ft",
     "location": "Banff National Park, Canada",
     "facilities": [

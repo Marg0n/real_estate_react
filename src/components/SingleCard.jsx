@@ -1,24 +1,26 @@
 
 import { PropTypes } from 'prop-types';
+import { GiTakeMyMoney } from 'react-icons/gi';
+import { TfiRulerPencil } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import Facility from './Facility';
 
 const SingleCard = ({ estate }) => {
 
-    const { id, segment_name, estate_title, image, 
+    const { id, segment_name, estate_title, image,
         // description, 
-        price, status, area, 
-        location, 
+        price, status, area,
+        location,
         facilities } = estate;
 
     return (
         <Link
-            to={`/book/${id}`}
-            className="border rounded-xl "
+            to={`/estate/${id}`}
+            className="border rounded-xl cursor-pointer hover:border-opacity-50 border-opacity-20 hover:scale-105 overflow-hidden hover:border-blue-700 "
         >
 
-            <div className="card shadow-xl min-h-[80vh]">
-                <figure className="mx-8 mt-8 p-8 rounded-xl bg-gray-200">
+            <div className="card shadow-2xl min-h-[80vh] ">
+                <figure className="mx-8 mt-8 p-6 rounded-xl bg-gray-200">
                     <img
                         src={image}
                         alt="Book image"
@@ -42,10 +44,10 @@ const SingleCard = ({ estate }) => {
 
                     <div className="w-full flex justify-between">
                         <small className="flex gap-2 items-center">
-                            {area}
+                            <TfiRulerPencil className='fill-pink-700' />{area}
                         </small>
                         <small className="flex gap-2 items-center">
-                            {price}
+                            <GiTakeMyMoney size='18' className='fill-green-700' /> {price}
 
                         </small>
                     </div>
