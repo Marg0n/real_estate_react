@@ -1,4 +1,4 @@
-# Oasis Real State
+# Oasis
 
 Hospitality based real estate segments: Hotels, motels, resorts, vacation rentals, Lodges, Guesthouses etc.
 
@@ -18,6 +18,7 @@ Resources:
 - [React Hook Form](https://react-hook-form.com/)
 - [Swiper](https://swiperjs.com/)
 - [Animate.css](https://animate.style/)
+- [Firebase](https://console.firebase.google.com)
 
 
 
