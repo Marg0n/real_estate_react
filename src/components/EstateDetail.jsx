@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Tag from "./Tag";
+import { toast } from 'react-toastify';
 
 
 const EstateDetail = () => {
@@ -27,6 +28,8 @@ const EstateDetail = () => {
         setRealEstate(estate);
     }, []);
 
+    const notify = () => toast.info(`Thanks for your ${status}!`, { theme: "colored" });
+
     console.log(facilities);
 
     return (
@@ -49,7 +52,7 @@ const EstateDetail = () => {
                     <p className="text-base">Price : <span className='font-semibold'> {price}</span></p>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-outline btn-circle border-blue-400 hover:bg-blue-500 hover:border-blue-500 uppercase">
+                    <button className="btn btn-outline btn-circle border-blue-400 hover:bg-blue-500 hover:border-blue-500 uppercase" onClick={notify}>
                         {status}
                     </button>
                 </div>

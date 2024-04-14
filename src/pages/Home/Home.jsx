@@ -1,5 +1,5 @@
 
-// import { toast } from 'react-toastify';
+
 import 'animate.css';
 import { useLoaderData } from 'react-router-dom';
 import Estates from '../../components/Estates';
@@ -7,12 +7,12 @@ import Slider from '../../components/Slider';
 
 const Home = () => {
 
-    // const notify = () => toast.info("Wow so easy!", { theme: "colored" });
+    
     const estates = useLoaderData();
 
     return (
         <div className=''>
-            {/* <button className='btn' onClick={notify}>Notify!</button> */}
+            {/* <button>Notify!</button> */}
             <div className='max-h-dvh'>
                 <Slider />
             </div>
