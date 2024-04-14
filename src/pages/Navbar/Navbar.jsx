@@ -6,15 +6,15 @@ const Navbar = () => {
     const lists = <>
         <NavLink
             className={({ isActive }) =>
-                isActive ? "text-blue-700 border p-2 border-blue-400 rounded-lg font-bold mr-4" : "font-bold mr-4"}
+                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
             to="/">Home</NavLink>
         <NavLink
             className={({ isActive }) =>
-                isActive ? "text-blue-700 border p-2 border-blue-400 rounded-lg font-bold mr-4" : "font-bold mr-4"}
+                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
             to="/update">Update Profile</NavLink>
         <NavLink
             className={({ isActive }) =>
-                isActive ? "text-blue-700 border p-2 border-blue-400 rounded-lg font-bold mr-4" : "font-bold mr-4"}
+                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
             to="/register">Register</NavLink>
     </>;
     return (
@@ -35,8 +35,12 @@ const Navbar = () => {
                     {lists}
                 </ul>
             </div>
+
             <div className="navbar-end">
-                <Link to="/login" className="btn btn-neutral">Login</Link>
+                <Link to="/login" 
+                className="btn btn-outline text-center rounded-lg hover:bg-blue-500 hover:text-white hover:border-0"
+                >
+                    Login</Link>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">

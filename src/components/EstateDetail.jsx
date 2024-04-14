@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import Tag from "./Tag";
+// import Tag from "./Tag";
 import { toast } from 'react-toastify';
 
 
@@ -14,7 +14,7 @@ const EstateDetail = () => {
 
     const [realEstate, setRealEstate] = useState({});
 
-    const { 
+    const {
         // id, 
         segment_name, estate_title, image,
         description,
@@ -28,14 +28,17 @@ const EstateDetail = () => {
         setRealEstate(estate);
     }, []);
 
-    const notify = () => toast.info(`Thanks for your ${status}!`, { theme: "colored" });
+    const notify = () => toast.info(
+        `Thanks! We have confirmed your ${status == 'sale' ? 'Buy' : status}!`,
+        { theme: "colored" }
+    );
 
     console.log(facilities);
 
     return (
-        <div className="card lg:card-side bg-base-100 shadow-2xl border-2">
-            <figure><img src={image} /></figure>
-            <div className="card-body">
+        <div className="card lg:card-side bg-base-100 shadow-2xl border-2 ">
+            <figure className="object-cover w-1/2"><img src={image} /></figure>
+            <div className="card-body w-1/2">
                 <h2 className="card-title text-2xl font-bold font-serif">{estate_title}</h2>
                 <p className="text-base font-serif">{description}</p>
                 <div className="h-28 w-full space-y-2 mt-4">
@@ -53,7 +56,9 @@ const EstateDetail = () => {
                 </div>
                 <div className="card-actions justify-end">
                     <button className="btn btn-outline btn-circle border-blue-400 hover:bg-blue-500 hover:border-blue-500 uppercase" onClick={notify}>
-                        {status}
+                        {
+                            status == 'sale' ? 'Buy' : status
+                        }
                     </button>
                 </div>
             </div>
