@@ -1,55 +1,94 @@
-import { FaGithub } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import useAuth from './../../hooks/useAuth';
 
 
 const Register = () => {
+
+    const { createUser } = useAuth();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        const { email, password } = data;
+        createUser(email, password)
+            .then(result => {
+                console.log(result)
+                toast.success("Registration successful!🎉", { autoClose: 3000, theme: "colored" })
+            })
+            .catch(errors => {
+                errors.message = "Firebase: Error (auth/email-already-in-use)." ?
+                    toast.error("Email already in use!", { autoClose: 3000, theme: "colored" })
+                    : toast.error(errors.message, { autoClose: 3000, theme: "colored" })
+            })
+    }
+
+    // console.log(createUser); 
+
     return (
         <div className="flex justify-center items-center my-10">
 
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl">
                 <h1 className="text-2xl font-bold text-center font-serif">Register</h1>
 
-                <form  action="" className="space-y-6">
+                <form
+                    className="space-y-6"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
                     <div className="space-y-1 text-sm">
                         <label htmlFor="name" className="block dark:text-gray-600">Name</label>
 
-                        <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" required />
+                        <input type="text" name="name" placeholder="Name" className="input input-bordered w-full"
+                            {...register("name", { required: true })}
+                        />
+                        <div className="mt-1 animate-pulse">
+                            {errors.name && <span className="text-red-500">Please fill up Name field</span>}
+                        </div>
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block dark:text-gray-600">Email</label>
 
-                        <input type="email" name="email" placeholder="Email" className="input input-bordered w-full" required />
+                        <input type="email" name="email" placeholder="Email" className="input input-bordered w-full"
+                            {...register("email", { required: true })}
+                        />
+                        <div className="mt-1 animate-pulse">
+                            {errors.email && <span className="text-red-500">Please fill up Email field</span>}
+                        </div>
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="photoURL" className="block dark:text-gray-600">Photo URL</label>
 
-                        <input type="text" name="photoURL" placeholder="photoURL" className="input input-bordered w-full" required />
+                        <input type="text" name="photoURL" placeholder="photoURL" className="input input-bordered w-full"
+                            {...register("photoURL"
+                                // , { required: true }
+                            )}
+                        />
+                        {/* <div className="mt-1 animate-pulse">
+                            {errors.photoURL && <span className="text-red-500">Please fill up Photo URL field</span>}
+                        </div> */}
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block dark:text-gray-600">Password</label>
 
-                        <input type="password" name="password" placeholder="Password" className="input input-bordered w-full" required />
-                        
+                        <input type="password" name="password" placeholder="Password" className="input input-bordered w-full"
+                            {...register("password", { required: true })}
+                        />
+                        <div className="mt-1 animate-pulse">
+                            {errors.password && <span className="text-red-500">Please fill up Password field</span>}
+                        </div>
+
                     </div>
                     <button className="btn bg-teal-400 w-full text-center rounded-lg hover:bg-blue-500 hover:text-white ">Register</button>
                 </form>
 
-                <div className="flex items-center pt-4 space-x-1">
-                    <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
-                    <p className="px-3 text-sm dark:text-gray-600">Register with social accounts</p>
-                    <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
-                </div>
-                <div className="flex justify-center space-x-4">
-                    <button aria-label="Log in with Google" className="btn btn-circle btn-outline">
-                    <FcGoogle size='30' />
-                    </button>
-                    <button aria-label="Log in with Twitter" className="btn btn-circle btn-outline">
-                    <FaGithub size='30' />
-                    </button>
-                </div>
+
                 <p className="text-xs text-center sm:px-6 dark:text-gray-600">Already have an account?
-                    <Link className="underline mx-2 text-blue-600 font-bold font-serif">Log In</Link>
+                    <Link to='/login' className="underline mx-2 text-blue-600 font-bold font-serif">Log In</Link>
                 </p>
             </div>
         </div>
