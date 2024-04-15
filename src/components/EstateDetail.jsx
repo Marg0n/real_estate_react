@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-// import Tag from "./Tag";
 import { toast } from 'react-toastify';
+import Tag from "./Tag";
 
 
 const EstateDetail = () => {
 
     const estates = useLoaderData()
     const { uid } = useParams();
+
+
 
     // console.log(estates)
     // console.log(uid)
@@ -41,11 +43,11 @@ const EstateDetail = () => {
             <div className="card-body w-1/2">
                 <h2 className="card-title text-2xl font-bold font-serif">{estate_title}</h2>
                 <p className="text-base font-serif">{description}</p>
-                <div className="h-28 w-full space-y-2 mt-4">
+                <div className="h-40 w-full space-y-2 mt-4">
                     <div className='w-full space-x-2 '>
                         <>Facilities: </>
                         {
-                            // facilities.map((facility, idx) => <Tag key={idx} facility={facility} />)
+                            facilities?.map((facility, idx) => <Tag key={idx} facility={facility} />)
                         }
                     </div>
                     <p className="text-base">Location : <span className='font-semibold'> {location}</span></p>

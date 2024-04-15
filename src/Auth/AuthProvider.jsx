@@ -12,6 +12,10 @@ const AuthProvider = ({ children }) => {
     // get the user
     const [user, setUser] = useState(null);
 
+    // loading
+    const [loading, setLoading] = useState(true);
+    console.log(loading)
+
     console.log("user ase?",user)
 
     // social auth Providers
@@ -20,28 +24,32 @@ const AuthProvider = ({ children }) => {
 
     // create a user
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // Login the user
     const signInUser = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     };
 
     // Google login
     const googleLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     };
 
     // GitHub login
     const gitHubLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, gitHubProvider)
     };
 
     // logout
     const loggedOut = () => {
         setUser(null);
-        signOut(auth)
+        signOut(auth);
     };
 
     // Observer
@@ -49,9 +57,11 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
               setUser(currentUser);
+              setLoading(false);
             } 
           });
 
+          // cleanup function
           return () => {
             return unsubscribe();
         }
@@ -64,6 +74,8 @@ const AuthProvider = ({ children }) => {
         gitHubLogin,
         loggedOut,
         user,
+        loading,
+        setLoading,
     };
 
     return (
