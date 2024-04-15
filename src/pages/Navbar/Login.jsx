@@ -1,16 +1,21 @@
 import { useForm } from "react-hook-form";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
 
     const { signInUser,googleLogin,gitHubLogin } = useAuth();
 
-    console.log(googleLogin);
+    // Navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+    const whereTo = location?.state || '/';
 
+    // React hook form
     const {
         register,
         handleSubmit,
@@ -19,13 +24,49 @@ const Login = () => {
 
     const onSubmit = (data) => {
         const { email, password } = data;
+
         signInUser(email, password)
             .then(result => {
                 console.log(result.user)
+                toast.success("Logged in successful!🎉", { autoClose: 2000, theme: "colored" })
+
+                if (result.user){
+                    navigate(whereTo)
+                }
+
             })
             .catch(error => {
-                console.log(error)
+                const errorCode = error.code;
+                // Remove 'auth/' prefix and '-' characters
+                const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
+                const words = cleanedErrorCode.split('-');
+                const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
+                const message = capitalizedWords.join(' ');
+                toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
+                
             })
+    }
+
+    // Navigation handler for all social platform
+    const handleSocialLogin = socialLoginProvider => {
+        socialLoginProvider()
+        .then(result => {
+            if (result.user){
+                toast.success("Logged in successful!🎉", { autoClose: 2000, theme: "colored" })
+                navigate(whereTo)
+            }
+        })
+        .catch(error => {
+            const errorCode = error.code;
+            // Remove 'auth/' prefix and '-' characters
+            const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
+            const words = cleanedErrorCode.split('-');
+            const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
+            const message = capitalizedWords.join(' ');
+            
+            toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
+            // console.log(errorCode,errorMessage)            
+        })
     }
 
     return (
@@ -73,13 +114,13 @@ const Login = () => {
                 <div className="flex justify-center space-x-4">
                     <button aria-label="Log in with Google" 
                     className="btn btn-circle btn-outline"
-                    onClick={() => googleLogin()}
+                    onClick={() => handleSocialLogin(googleLogin)}
                     >
                         <FcGoogle size='30' />
                     </button>
                     <button aria-label="Log in with Twitter" 
                     className="btn btn-circle btn-outline"
-                    onClick={() => gitHubLogin()}
+                    onClick={() => handleSocialLogin(gitHubLogin)}
                     >
                         <FaGithub size='30' />
                     </button>

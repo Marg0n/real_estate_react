@@ -5,6 +5,9 @@ import Root from "../pages/Root";
 import Login from "../pages/Navbar/Login";
 import Register from "../pages/Navbar/Register";
 import EstateDetail from "../components/EstateDetail";
+import Profile from './../components/Profile';
+import Update from './../components/Update';
+import PrivateRoute from "../components/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -27,8 +30,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/estate/:uid",
-        element: <EstateDetail />,
+        element: <PrivateRoute> <EstateDetail /></PrivateRoute>,
         loader: () => fetch('/real_estate.json'),
+      },
+      {
+        path: "/update",
+        element: <PrivateRoute><Update /></PrivateRoute>,
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoute><Profile /></PrivateRoute>,
       }
     ]
   },

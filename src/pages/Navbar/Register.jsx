@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from './../../hooks/useAuth';
 
@@ -7,6 +7,12 @@ import useAuth from './../../hooks/useAuth';
 const Register = () => {
 
     const { createUser } = useAuth();
+
+    // Navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+    const whereTo = location?.state || '/';
+
 
     const {
         register,
@@ -20,15 +26,19 @@ const Register = () => {
             .then(result => {
                 console.log(result)
                 toast.success("Registration successful!🎉", { autoClose: 3000, theme: "colored" })
+                if (result.user) {
+                    navigate(whereTo)
+                }
             })
             .catch(errors => {
-                errors.message = "Firebase: Error (auth/email-already-in-use)." ?
-                    toast.error("Email already in use!", { autoClose: 3000, theme: "colored" })
-                    : toast.error(errors.message, { autoClose: 3000, theme: "colored" })
+                // Get the part after ':' and before '(' and remove leading/trailing whitespace
+                const errorMessage = errors.message.split(':')[1].split('(')[0].trim(); 
+
+                toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
             })
     }
 
-    // console.log(createUser); 
+
 
     return (
         <div className="flex justify-center items-center my-10">

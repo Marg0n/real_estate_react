@@ -52,7 +52,7 @@ const SingleCard = ({ estate }) => {
                         </small>
                     </div>
                 </div>
-                <Link to={`/estate/${id}`} className='btn m-4 bg-teal-400 hover:bg-blue-500 hover:text-white'>View Property</Link>
+                <Link to={`/estate/${id}`} className='btn m-4 bg-teal-400 hover:bg-blue-500 hover:text-white animate-pulse'>View Property</Link>
             </div>
         </div>
     );

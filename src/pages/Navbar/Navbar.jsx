@@ -1,21 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
 const Navbar = () => {
+
+    const { loggedOut, user } = useAuth();
+
 
     const lists = <>
         <NavLink
             className={({ isActive }) =>
                 isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
             to="/">Home</NavLink>
-        <NavLink
-            className={({ isActive }) =>
-                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
-            to="/update">Update Profile</NavLink>
-        <NavLink
-            className={({ isActive }) =>
-                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
-            to="/update">User Profile</NavLink>
+        {
+            user &&
+            <>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
+                    to="/update">Update Profile</NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
+                    to="/profile">User Profile</NavLink>
+            </>
+        }
+
         <NavLink
             className={({ isActive }) =>
                 isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
@@ -41,27 +51,47 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end">
-                <Link to="/login" 
-                className="btn btn-outline text-center rounded-lg hover:bg-blue-500 hover:text-white hover:border-0"
-                >
-                    Login</Link>
-                <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+
+                {
+                    user ?
+
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-outline avatar">
+                                <div className="w-10 rounded-full animate-pulse">
+
+                                    <img alt="Tailwind CSS Navbar component"
+                                        src=
+                                        {
+                                            user?.photoURL ? user.photoURL
+                                                : "https://i.ibb.co/8dJbHdP/No-Photo-Available.webp"
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="mt-3 z-[2] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-64">
+                                <li >
+                                    <p className="flex justify-center items-center">
+                                        Hi, <span className=" text-blue-500 font-serif">
+                                            {
+                                                user?.email || user.displayName
+                                            }
+                                        </span>
+                                    </p>
+                                </li>
+                                <li
+                                    className="rounded-xl p-2 text-right hover:bg-blue-500 hover:text-white animate-pulse"
+                                    onClick={loggedOut}
+                                >
+                                    Logout</li>
+                            </ul>
                         </div>
-                    </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
+
+                        : <Link to="/login"
+                            className="btn btn-outline text-center rounded-lg hover:bg-blue-500 hover:text-white hover:border-0   animate-pulse"
+                        >
+                            Login</Link>
+                }
+
             </div>
         </div>
     );

@@ -33,7 +33,7 @@ const EstateDetail = () => {
         { theme: "colored" }
     );
 
-    console.log(facilities);
+    // console.log(facilities);
 
     return (
         <div className="card lg:card-side bg-base-100 shadow-2xl border-2 ">
