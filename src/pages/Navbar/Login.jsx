@@ -77,7 +77,7 @@ const Login = () => {
                 const message = capitalizedWords.join(' ');
 
                 toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
-                // console.log(errorCode,errorMessage)            
+                navigate('/login')          
             })
     }
 
@@ -85,8 +85,8 @@ const Login = () => {
         return <Loader />;
     }
 
-    if (user) {
-        // toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
+    if (user && location?.pathname=='/login' && location?.state == null) {
+        toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
         return <Navigate to='/' state={location?.pathname || '/'} />
     }
 
