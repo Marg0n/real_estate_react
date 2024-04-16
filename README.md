@@ -4,7 +4,7 @@ Hospitality based real estate segments: Hotels, motels, resorts, vacation rental
 
 Live site:
 
-- [Live Site]()
+- [Live Site](https://fir-authentication-de0a2.web.app)
 
 
 Resources:
