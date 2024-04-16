@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loader";
 import useAuth from './../../hooks/useAuth';
 
 
 const Register = () => {
 
-    const { createUser } = useAuth();
+    const { createUser, user } = useAuth();
 
     // Navigation
     const navigate = useNavigate();
     const location = useLocation();
     const whereTo = location?.state || '/';
+    const { loading } = useAuth();
 
 
     const {
@@ -32,18 +34,32 @@ const Register = () => {
             })
             .catch(errors => {
                 // Get the part after ':' and before '(' and remove leading/trailing whitespace
-                const errorMessage = errors.message.split(':')[1].split('(')[0].trim(); 
+                const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 
                 toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
             })
     }
 
 
+    if (loading) {
+        return <Loader />;
+    }
+
+    if (user) {
+        // toast.info(`Dear, ${user?.displayName || user?.email}! You are already registered!`, { autoClose: 3000, theme: "colored" });
+        return <Navigate to='/' state={location?.pathname || '/'} />
+    }
 
     return (
         <div className="flex justify-center items-center my-10">
 
-            <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl">
+            <img
+                src="https://cdn.pixabay.com/photo/2017/06/03/10/06/house-2368389_1280.jpg"
+                alt=""
+                className="bg-fixed absolute z-[-1] h-[170dvh] w-full object-cover"
+            />
+
+            <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl font-semibold">
                 <h1 className="text-2xl font-bold text-center font-serif">Register</h1>
 
                 <form
@@ -93,7 +109,7 @@ const Register = () => {
                         </div>
 
                     </div>
-                    <button className="btn bg-teal-400 w-full text-center rounded-lg hover:bg-blue-500 hover:text-white ">Register</button>
+                    <button className="btn bg-teal-400 w-full text-center rounded-lg hover:bg-blue-500 hover:text-white  border-none animate-pulse hover:animate-none">Register</button>
                 </form>
 
 

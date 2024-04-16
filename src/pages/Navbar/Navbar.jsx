@@ -26,10 +26,15 @@ const Navbar = () => {
             </>
         }
 
-        <NavLink
+        {
+            !user ? <NavLink
             className={({ isActive }) =>
                 isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
             to="/register">Register</NavLink>
+            : ''
+        }
+
+        
     </>;
     return (
         <div className="navbar bg-base-200 shadow-2xl container my-4 mx-auto rounded-lg font-serif">
@@ -56,10 +61,12 @@ const Navbar = () => {
                     user ?
 
                         <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-outline avatar">
-                                <div className="w-10 rounded-full animate-pulse">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle btn-outline avatar animate-pulse">
+                                <div className="w-10 rounded-full">
 
-                                    <img alt="Tailwind CSS Navbar component"
+                                    <img 
+                                    title={`${user?.displayName || user?.email}`}
+                                    alt="Tailwind CSS Navbar component"
                                         src=
                                         {
                                             user?.photoURL ? user.photoURL

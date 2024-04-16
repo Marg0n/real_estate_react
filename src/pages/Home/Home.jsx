@@ -4,15 +4,21 @@ import 'animate.css';
 import { useLoaderData } from 'react-router-dom';
 import Estates from '../../components/Estates';
 import Slider from '../../components/Slider';
+import useAuth from '../../hooks/useAuth';
+import Loader from '../../components/Loader';
 
 const Home = () => {
 
-    
     const estates = useLoaderData();
+    const {loading} = useAuth();
+
+    if (loading) {
+        return <Loader/>;
+    }
 
     return (
         <div className=''>
-            {/* <button>Notify!</button> */}
+            
             <div className='max-h-dvh'>
                 <Slider />
             </div>

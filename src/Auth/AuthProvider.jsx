@@ -62,7 +62,8 @@ const AuthProvider = ({ children }) => {
           });
 
           // cleanup function
-          return () => {
+          return () => {            
+            setLoading(false);
             return unsubscribe();
         }
     }, []);
