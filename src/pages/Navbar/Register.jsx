@@ -9,6 +9,8 @@ import Loader from "../../components/Loader";
 import useAuth from './../../hooks/useAuth';
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { TfiEye } from "react-icons/tfi";
+import { RxEyeClosed } from "react-icons/rx";
 
 
 const Register = () => {
@@ -18,8 +20,8 @@ const Register = () => {
     // custom loader for registration
     const [customLoader, setCustomLoader] = useState(false);
 
-    // password validation
-    const [passErr, setPaaErr] = useState('');
+    // password show
+    const [passShow, setPassShow]  = useState('');
 
     // Navigation
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ const Register = () => {
     const {
         register,
         handleSubmit,
-        watch,
+        // watch,
         formState: { errors },
     } = useForm()
 
@@ -40,8 +42,7 @@ const Register = () => {
         const { email, password, name, photoURL } = data;
 
         if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
-            console.log(watch('password'))
-            setPaaErr(watch('password'));
+            // console.log(watch('password'))
             return toast.error("Password must contain an Uppercase, a Lowercase and Length must be at least 6", { autoClose: 3000, theme: "colored" })
         }
 
@@ -109,7 +110,7 @@ const Register = () => {
             <img
                 src="https://cdn.pixabay.com/photo/2017/06/03/10/06/house-2368389_1280.jpg"
                 alt=""
-                className="bg-fixed absolute z-[-1] h-[170dvh] w-full object-cover"
+                className="bg-fixed absolute z-[-1] h-[165dvh] w-full object-cover"
             />
 
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl font-semibold">
@@ -151,15 +152,26 @@ const Register = () => {
                             {errors.photoURL && <span className="text-red-500">Please fill up Photo URL field</span>}
                         </div> */}
                     </div>
-                    <div className="space-y-1 text-sm">
+                    <div className="space-y-1 text-sm relative">
                         <label htmlFor="password" className="block dark:text-gray-600">Password</label>
 
-                        <input type="password" name="password" placeholder="Password" className="input input-bordered w-full"
+                        <input 
+                        type={ passShow ? "text" : "password"}  
+                        name="password" 
+                        placeholder="Password" 
+                        className="input input-bordered w-full"
                             {...register("password", { required: true })}
                         />
+                        <span 
+                        onClick={() => setPassShow(!passShow)}
+                        className="cursor-pointer absolute top-9 right-4"
+                        >
+                            {
+                                passShow ? <TfiEye /> : <RxEyeClosed />
+                            }
+                        </span>
                         <div className="mt-1 animate-pulse">
                             {errors.password && <span className="text-red-500">Please fill up Password field</span>}
-                            {/* <small>{passErr}</small> */}
                         </div>
 
                     </div>

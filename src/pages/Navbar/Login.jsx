@@ -7,6 +7,8 @@ import Loader from "../../components/Loader";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { TfiEye } from "react-icons/tfi";
+import { RxEyeClosed } from "react-icons/rx";
 
 const Login = () => {
 
@@ -16,6 +18,9 @@ const Login = () => {
 
     // custom loader for login
     const [customLoader, setCustomLoader] = useState(false);
+
+    // password show
+    const [passShow, setPassShow] = useState(false);
 
     // Navigation
     const navigate = useNavigate();
@@ -100,7 +105,7 @@ const Login = () => {
             <img
                 src="https://cdn.pixabay.com/photo/2017/06/03/10/06/house-2368389_1280.jpg"
                 alt=""
-                className="bg-fixed absolute z-[-1] h-[160dvh] w-full object-cover"
+                className="bg-fixed absolute z-[-1] h-[155dvh] w-full object-cover"
             />
 
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl font-semibold">
@@ -120,12 +125,24 @@ const Login = () => {
                             {errors.email && <span className="text-red-500">Please fill up Email field</span>}
                         </div>
                     </div>
-                    <div className="space-y-1 text-sm">
+                    <div className="space-y-1 text-sm relative">
                         <label htmlFor="password" className="block dark:text-gray-600">Password</label>
 
-                        <input type="password" name="password" placeholder="Password" className="input input-bordered w-full"
+                        <input 
+                        type={ passShow ? "text" : "password"} 
+                        name="password" 
+                        placeholder="Password" 
+                        className="input input-bordered w-full"
                             {...register("password", { required: true })}
                         />
+                        <span 
+                        onClick={() => setPassShow(!passShow)}
+                        className="cursor-pointer absolute top-9 right-4"
+                        >
+                            {
+                                passShow ? <TfiEye /> : <RxEyeClosed />
+                            }
+                        </span>
                         <div className="mt-1 animate-pulse">
                             {errors.password && <span className="text-red-500">Please fill up Password field</span>}
                         </div>
