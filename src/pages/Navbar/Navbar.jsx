@@ -69,7 +69,7 @@ const Navbar = () => {
                                     alt="Tailwind CSS Navbar component"
                                         src=
                                         {
-                                            user?.photoURL ? user.photoURL
+                                            user?.photoURL ? user?.photoURL
                                                 : "https://i.ibb.co/8dJbHdP/No-Photo-Available.webp"
                                         }
                                     />
@@ -80,7 +80,7 @@ const Navbar = () => {
                                     <p className="flex justify-center items-center">
                                         Hi, <span className=" text-blue-500 font-serif">
                                             {
-                                                user?.email || user.displayName
+                                                user?.displayName || user?.email
                                             }
                                         </span>
                                     </p>

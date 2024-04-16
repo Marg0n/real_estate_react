@@ -1,5 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import {
+    Link, Navigate,
+    // useLocation, 
+    useNavigate
+} from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import useAuth from './../../hooks/useAuth';
@@ -7,12 +11,13 @@ import useAuth from './../../hooks/useAuth';
 
 const Register = () => {
 
-    const { createUser, user } = useAuth();
+    const { createUser, user, updateUserProfile, loggedOut } = useAuth();
 
     // Navigation
     const navigate = useNavigate();
-    const location = useLocation();
-    const whereTo = location?.state || '/';
+    // const location = useLocation();
+    // const whereTo = location?.state || '/login';
+    const whereTo = '/login';
     const { loading } = useAuth();
 
 
@@ -23,16 +28,32 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        const { email, password } = data;
+        const { email, password, name, photoURL } = data;
+
+        // create user profile and update user
         createUser(email, password)
-            .then(result => {
-                console.log(result)
-                toast.success("Registration successful!🎉", { autoClose: 3000, theme: "colored" })
-                if (result.user) {
-                    navigate(whereTo)
-                }
+            .then(() => {
+                updateUserProfile(name, photoURL)
+                    .then(() => {
+                        // Profile updated!
+                        toast.success("Registration successful!🎉", { autoClose: 3000, theme: "colored" })
+                        toast.info("Try to Login! 😁", { autoClose: 5000, theme: "colored" })
+                        // if (result.user) {
+                        loggedOut();
+                        navigate(whereTo)
+                        // }
+                    }).catch((errors) => {
+                        // An error occurred
+                        const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
+
+                        toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
+                    });
+
+                // console.log(result)
+
             })
             .catch(errors => {
+                // An error occurred
                 // Get the part after ':' and before '(' and remove leading/trailing whitespace
                 const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 

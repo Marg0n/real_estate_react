@@ -43,7 +43,7 @@ const Login = () => {
                 const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
                 const message = capitalizedWords.join(' ');
                 toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
-
+                
             })
     }
 
