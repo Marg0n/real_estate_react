@@ -91,7 +91,7 @@ const Login = () => {
     }
 
     if (user && location?.pathname=='/login' && location?.state == null) {
-        toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
+        // toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
         return <Navigate to='/' state={location?.pathname || '/'} />
     }
 
