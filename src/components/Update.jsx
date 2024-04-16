@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
 
@@ -51,6 +52,9 @@ const Update = () => {
 
     return (
         <div className="flex justify-center items-center my-10">
+            <Helmet>
+                <title>Oasis | Update Profile</title>
+            </Helmet>
 
             
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl font-semibold">

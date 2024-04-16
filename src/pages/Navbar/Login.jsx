@@ -5,6 +5,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
@@ -81,6 +82,9 @@ const Login = () => {
     return (
 
         <div className="flex justify-center items-center my-10">
+            <Helmet>
+                <title>Oasis | Login</title>
+            </Helmet>
 
             <img
                 src="https://cdn.pixabay.com/photo/2017/06/03/10/06/house-2368389_1280.jpg"

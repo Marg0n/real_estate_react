@@ -7,6 +7,7 @@ import {
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import useAuth from './../../hooks/useAuth';
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -59,6 +60,7 @@ const Register = () => {
                 const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 
                 toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
+                navigate('/register');
             })
     }
 
@@ -74,6 +76,9 @@ const Register = () => {
 
     return (
         <div className="flex justify-center items-center my-10">
+            <Helmet>
+                <title>Oasis | Home</title>
+            </Helmet>
 
             <img
                 src="https://cdn.pixabay.com/photo/2017/06/03/10/06/house-2368389_1280.jpg"

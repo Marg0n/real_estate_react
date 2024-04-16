@@ -6,6 +6,7 @@ import Estates from '../../components/Estates';
 import Slider from '../../components/Slider';
 import useAuth from '../../hooks/useAuth';
 import Loader from '../../components/Loader';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
 
@@ -18,7 +19,9 @@ const Home = () => {
 
     return (
         <div className=''>
-            
+            <Helmet>
+                <title>Oasis | Home</title>
+            </Helmet>
             <div className='max-h-dvh'>
                 <Slider />
             </div>

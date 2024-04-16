@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import useAuth from "../hooks/useAuth";
 
 
@@ -8,7 +9,9 @@ const Profile = () => {
 
     return (
         <div  >
-            
+            <Helmet>
+                <title>Oasis | Profile</title>
+            </Helmet>
 
             <div 
             className="hero min-h-[calc(100vh-48px)] border-2 rounded-2xl shadow-2xl font-bold" 

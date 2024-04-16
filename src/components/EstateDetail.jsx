@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Tag from "./Tag";
+import { Helmet } from "react-helmet-async";
 
 
 const EstateDetail = () => {
@@ -35,6 +36,9 @@ const EstateDetail = () => {
 
     return (
         <div className="card lg:card-side bg-base-100 shadow-2xl border-2 ">
+            <Helmet>
+                <title>Oasis | Estate Details</title>
+            </Helmet>
             <figure className="object-cover w-1/2"><img src={image} /></figure>
             <div className="card-body w-1/2">
                 <h2 className="card-title text-2xl font-bold font-serif">{estate_title}</h2>
