@@ -21,6 +21,7 @@ Resources:
 - [Firebase](https://console.firebase.google.com)
 - [Tailwind UI Kit](https://tuk.dev/components)
 - [Mamba UI](https://mambaui.com/)
+- [react-helmet-async](https://www.npmjs.com/package/react-helmet-async)
 
 
 
