@@ -75,7 +75,6 @@ const AuthProvider = ({ children }) => {
         loggedOut,
         user,
         loading,
-        setLoading,
     };
 
     return (
