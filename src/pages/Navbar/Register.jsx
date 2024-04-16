@@ -18,6 +18,9 @@ const Register = () => {
     // custom loader for registration
     const [customLoader, setCustomLoader] = useState(false);
 
+    // password validation
+    const [passErr, setPaaErr] = useState('');
+
     // Navigation
     const navigate = useNavigate();
     // const location = useLocation();
@@ -28,11 +31,19 @@ const Register = () => {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
     } = useForm()
 
+   
     const onSubmit = (data) => {
         const { email, password, name, photoURL } = data;
+
+        if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+            console.log(watch('password'))
+            setPaaErr(watch('password'));
+            return toast.error("Password must contain an Uppercase, a Lowercase and Length must be at least 6", { autoClose: 3000, theme: "colored" })
+        }
 
         // create user profile and update user
         createUser(email, password)
@@ -148,6 +159,7 @@ const Register = () => {
                         />
                         <div className="mt-1 animate-pulse">
                             {errors.password && <span className="text-red-500">Please fill up Password field</span>}
+                            {/* <small>{passErr}</small> */}
                         </div>
 
                     </div>
