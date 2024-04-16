@@ -6,10 +6,16 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const Login = () => {
 
-    const { signInUser, googleLogin, gitHubLogin, loading, user } = useAuth();
+    const { signInUser, googleLogin, gitHubLogin, 
+        // loading, 
+        user } = useAuth();
+
+    // custom loader for login
+    const [customLoader, setCustomLoader] = useState(false);
 
     // Navigation
     const navigate = useNavigate();
@@ -28,15 +34,20 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
+
+                setCustomLoader(true);
+                // console.log(result.user)
                 toast.success("Logged in successful!🎉", { autoClose: 2000, theme: "colored" })
 
                 if (result.user) {
+                    setCustomLoader(false);
                     navigate(whereTo)
                 }
 
             })
             .catch(error => {
+
+                setCustomLoader(false);
                 const errorCode = error.code;
                 // Remove 'auth/' prefix and '-' characters
                 const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
@@ -70,7 +81,7 @@ const Login = () => {
             })
     }
 
-    if (loading) {
+    if (customLoader) {
         return <Loader />;
     }
 

@@ -8,18 +8,21 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import useAuth from './../../hooks/useAuth';
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 
 const Register = () => {
 
     const { createUser, user, updateUserProfile, loggedOut } = useAuth();
 
+    // custom loader for registration
+    const [customLoader, setCustomLoader] = useState(false);
+
     // Navigation
     const navigate = useNavigate();
     // const location = useLocation();
     // const whereTo = location?.state || '/login';
     const whereTo = '/login';
-    const { loading } = useAuth();
 
 
     const {
@@ -36,14 +39,20 @@ const Register = () => {
             .then(() => {
                 updateUserProfile(name, photoURL)
                     .then(() => {
+
+                        setCustomLoader(true)
                         // Profile updated!
                         toast.success("Registration successful!🎉", { autoClose: 3000, theme: "colored" })
                         toast.info("Try to Login! 😁", { autoClose: 5000, theme: "colored" })
-                        // if (result.user) {
+                        
+                        // loader
+                        setCustomLoader(false)
                         loggedOut();
                         navigate(whereTo)
-                        // }
+                        
                     }).catch((errors) => {
+
+                        setCustomLoader(false)
                         // An error occurred
                         const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 
@@ -55,17 +64,23 @@ const Register = () => {
 
             })
             .catch(errors => {
-                // An error occurred
-                // Get the part after ':' and before '(' and remove leading/trailing whitespace
-                const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 
-                toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
+                setCustomLoader(false)
+                // An error occurred                
+                const errorCode = errors.code;
+                // Remove 'auth/' prefix and '-' characters
+                const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
+                const words = cleanedErrorCode.split('-');
+                const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
+                const message = capitalizedWords.join(' ');
+
+                toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
                 navigate('/register');
             })
     }
 
 
-    if (loading) {
+    if (customLoader) {
         return <Loader />;
     }
 

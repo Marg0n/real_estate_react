@@ -59,7 +59,7 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="navbar-end">
+            <div className="navbar-end cursor-pointer">
 
                 {
                     user ?
@@ -90,7 +90,7 @@ const Navbar = () => {
                                     </p>
                                 </li>
                                 <li
-                                    className="rounded-xl p-2 text-right hover:bg-blue-500 hover:text-white animate-pulse"
+                                    className="rounded-xl p-2 m-2 text-right hover:bg-blue-500 hover:text-white animate-pulse"
                                     onClick={loggedOut}
                                 >
                                     Logout</li>
