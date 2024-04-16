@@ -33,6 +33,10 @@ const Navbar = () => {
             to="/register">Register</NavLink>
             : ''
         }
+        <NavLink
+            className={({ isActive }) =>
+                isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4"}
+            to="/about">About</NavLink>
 
         
     </>;

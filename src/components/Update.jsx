@@ -9,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 
 const Update = () => {
 
-    const { user, updateUserProfile, loggedOut } = useAuth();
+    const { user, updateUserProfile } = useAuth();
 
     // Navigation
     const navigate = useNavigate();

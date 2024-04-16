@@ -46,7 +46,8 @@ const Register = () => {
                         // An error occurred
                         const errorMessage = errors.message.split(':')[1].split('(')[0].trim();
 
-                        toast.error(errorMessage, { autoClose: 3000, theme: "colored" })
+                        toast.error(errorMessage, { autoClose: 3000, theme: "colored" });
+                        navigate('/register');
                     });
 
                 // console.log(result)
